@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Question
 from django.http import HttpResponse
 from django.template import loader
@@ -10,7 +10,8 @@ def index(request):
     }
     return HttpResponse(template.render(context,request))
 def details(request, question_id):
-    return HttpResponse(f"You're Looking at question id {question_id}")
+    question = get_object_or_404(Question, pk = question_id)
+    return render(request, "djangoapicreation/choice.html", {'question': question})
 def results(request, question_id):
     response = "You're looking at the result of question"
     return HttpResponse(f"{response} { question_id}")
