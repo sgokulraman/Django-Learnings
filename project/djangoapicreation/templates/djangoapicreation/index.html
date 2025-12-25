@@ -1,0 +1,9 @@
+{% if latest_documents %}
+<ul>
+    {% for question in latest_documents %}
+    <li><a href = "/djangoapicreation/{{question.id}}/">{{question.question_text}}</a></li>
+    {% endfor %}
+</ul>
+{% else%}
+<p>No Django Api Creation are available</p>
+{% endif %}
