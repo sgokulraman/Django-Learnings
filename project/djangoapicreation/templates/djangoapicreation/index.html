@@ -1,7 +1,9 @@
-{% if latest_documents %}
+{% load static%}
+<link rel="stylesheet" type='text/css' href="{% static 'djangoapicreation/style.css' %}">
+{% if latest_question_list %}
 <ul>
-    {% for question in latest_documents %}
-    <li><a href = "/djangoapicreation/{{question.id}}/">{{question.question_text}}</a></li>
+    {% for question in latest_question_list %}
+    <li><a href ="{% url 'details' question.id%}">{{question.question_text}}</a></li>
     {% endfor %}
 </ul>
 {% else%}
