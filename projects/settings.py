@@ -1,7 +1,6 @@
 
-
 from pathlib import Path
-import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -10,13 +9,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = 'django-insecure-rdgmp5()9!*!w))q!r3%(3+6i8d=+9k!hl0=0un1#92f=j&axr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -27,14 +25,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'corsheaders',
+    'rest_framework',
     'api'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -44,7 +41,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware'
 ]
 
-ROOT_URLCONF = 'project.urls'
+ROOT_URLCONF = 'projects.urls'
 
 TEMPLATES = [
     {
@@ -61,16 +58,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
-
+WSGI_APPLICATION = 'projects.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': "management",
+        'USER': "root",
+        'PASSWORD':"Gokulraman",
+        'HOST':"localhost",
+        'PORT': "3306"
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -105,5 +104,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+
 CORS_ALLOW_ALL_ORIGINS = True
